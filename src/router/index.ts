@@ -3,16 +3,20 @@ import Cookies from 'js-cookie'
 import Home from '@/pages/home/index.vue'
 import Login from '@/pages/login/index.vue'
 // 获取微服务路由
-
+const basePath = import.meta.env.VITE_BASE
 // console.log(microRoutes);
 // 创建路由实例
 export const router: Router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: `${basePath}`,
+      redirect: `${basePath}index`,
+    },
+    {
+      path: `${basePath}index`,
       component: Home,
-      name: 'home',
+      name: 'index',
     },
     {
       path: '/login',
@@ -33,21 +37,12 @@ export const router: Router = createRouter({
   },
 })
 router.beforeEach((to, from, next) => {
-  // 判断有没有登录
-  const isLogin = Cookies.get('isLogin')
-  if (!isLogin) {
-    if (to.name == 'login' || to.name == 'home') {
-      next()
-    } else {
-      router.push('login')
-    }
+  // 可做登录拦截
+  if (to.path === '/login') {
+    router.push(`${basePath}`)
   } else {
-    if (to.path === '/login') {
-      router.push('/')
-    } else {
-      document.title = to.name as string
-      next()
-    }
+    document.title = to.name as string
+    next()
   }
 })
 export default router
