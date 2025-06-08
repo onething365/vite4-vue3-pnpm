@@ -1,5 +1,5 @@
 import { Router, createRouter, createWebHistory } from 'vue-router'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import Home from '@/pages/home/index.vue'
 import Login from '@/pages/login/index.vue'
 // 获取微服务路由

@@ -10,7 +10,8 @@
     "analysis": "VITE_ANALYSIS=true vite build",
     "preview": "vite preview",
     "lint-staged": "lint-staged",
-    "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\""
+    "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@alova/adapter-axios": "^2.0.13",
@@ -21,6 +22,7 @@
     "pinia": "^2.1.6",
     "pinia-plugin-persist": "^1.0.0",
     "rollup-plugin-visualizer": "^5.12.0",
+    "vite-plugin-javascript-obfuscator": "^3.1.0",
     "vue": "^3.2.45",
     "vue-router": "^4.2.5"
   },
